@@ -14,23 +14,23 @@ import com.personal.TrainingDemo.services.ProductService;
 
 @RestController
 public class ProductController {
-	
+
 	@Autowired
 	private ProductService productService;
-	
+
 	@GetMapping("/products")
 	public List<Product> findAllProducts() {
 		return productService.getAllProducts();
 	}
-	
+
 	@GetMapping("products/{id}")
 	public Product findProduct(@PathVariable String id) {
 		return productService.getProduct(id);
 	}
-	
+
 	@PostMapping("/products")
 	public int addProduct(@RequestBody Product product) {
 		return productService.addProduct(product);
 	}
-	
+
 }
