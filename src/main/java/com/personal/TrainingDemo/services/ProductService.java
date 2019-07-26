@@ -29,12 +29,11 @@ public class ProductService {
 	}
 
 	public int addProduct(Product product) {
-		boolean productPresent = productsList.stream().anyMatch(prod -> prod.getId().equals(product.getId()));
-		if (productPresent) {
-			return 1;
-		} else {
+		if(getProduct(product.getId()) == null) {
 			productsList.add(product);
 			return 0;
+		} else {
+			return 1;
 		}
 	}
 

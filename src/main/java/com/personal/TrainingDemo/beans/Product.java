@@ -1,7 +1,13 @@
 package com.personal.TrainingDemo.beans;
 
-public class Product {
+import java.io.Serializable;
 
+public class Product implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5678042485276937973L;
 	private String id;
 	private String code;
 	private String name;
