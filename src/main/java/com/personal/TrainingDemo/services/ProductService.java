@@ -12,8 +12,9 @@ import com.personal.TrainingDemo.beans.Product;
 @Service
 public class ProductService {
 
-	Product[] pl = { new Product("1"), new Product("2"), new Product("3") };
-	private List<Product> productsList = new ArrayList(Arrays.asList(pl));
+	private List<Product> productsList = new ArrayList<>(Arrays.asList(new Product("3"), 
+																		new Product("2"), 
+																		new Product("1")));
 
 	public List<Product> getAllProducts() {
 		return productsList;
