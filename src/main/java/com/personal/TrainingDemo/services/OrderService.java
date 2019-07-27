@@ -25,15 +25,21 @@ public class OrderService {
 
 	public Order getOrder(String id) {
 		logger.trace("Inside getOrder()");
-		
+
 		try {
-			if(id == null) {
-				throw new Exception("input ID null");
+			if (id == null) {
+				throw new NullPointerException("input ID null");
 			}
-			
+
+			if (ordersList == null) {
+				throw new NullPointerException("ordersList null");
+			}
+
 			Optional<Order> optionalOrder = ordersList.stream().filter(order -> order.getId().equals(id)).findFirst();
-			if(optionalOrder.isPresent())	return optionalOrder.get();
-		} catch(Exception e) {
+			if (optionalOrder.isPresent())
+				return optionalOrder.get();
+
+		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 		return null;
@@ -42,14 +48,20 @@ public class OrderService {
 	public int addOrder(Order order) {
 		logger.trace("Inside addOrder()");
 		try {
-			if(order == null) {
-				throw new Exception("Input order null");
+			if (order == null) {
+				throw new NullPointerException("Input order null");
 			}
-			if(getOrder(order.getId()) == null) {
+
+			if (ordersList == null) {
+				throw new NullPointerException("ordersList null");
+			}
+
+			if (getOrder(order.getId()) == null) {
 				ordersList.add(order);
 				return 0;
-			}	
-		} catch(Exception e) {
+			}
+
+		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
 		return 1;
