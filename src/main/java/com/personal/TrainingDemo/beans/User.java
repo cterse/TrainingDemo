@@ -4,80 +4,89 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class User implements Serializable {
-	private String customerId;
-	private String customerFirstName;
-	private String customerLastName;
-	private String customerEmail;
-	private int customerPhone;
-	private String customerAddress;
-	private String customerPassword;
-	private Date customerRegDate;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1325594779428364157L;
+	private String id;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private int phone;
+	private String address;
+	private String password;
+	private Date registrationDate;
 	
-	public User(String customerId) {
+	public User(String id) {
 		super();
-		this.customerId = customerId;
-	}
-	public User(String customerId, String customerFirstName, String customerLastName, String customerEmail,
-			int customerPhone, String customerAddress, String customerPassword, Date customerRegDate) {
-		super();
-		this.customerId = customerId;
-		this.customerFirstName = customerFirstName;
-		this.customerLastName = customerLastName;
-		this.customerEmail = customerEmail;
-		this.customerPhone = customerPhone;
-		this.customerAddress = customerAddress;
-		this.customerPassword = customerPassword;
-		this.customerRegDate = customerRegDate;
+		this.id = id;
 	}
 	public User() {
 		super();
 	}
-	public String getCustomerId() {
-		return customerId;
+	public User(String id, String firstName, String lastName, String email, int phone, String address, String password,
+			Date registrationDate) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.password = password;
+		this.registrationDate = registrationDate;
 	}
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
+	public String getId() {
+		return id;
 	}
-	public String getCustomerFirstName() {
-		return customerFirstName;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public void setCustomerFirstName(String customerFirstName) {
-		this.customerFirstName = customerFirstName;
+	public String getFirstName() {
+		return firstName;
 	}
-	public String getCustomerLastName() {
-		return customerLastName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public void setCustomerLastName(String customerLastName) {
-		this.customerLastName = customerLastName;
+	public String getLastName() {
+		return lastName;
 	}
-	public String getCustomerEmail() {
-		return customerEmail;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	public void setCustomerEmail(String customerEmail) {
-		this.customerEmail = customerEmail;
+	public String getEmail() {
+		return email;
 	}
-	public int getCustomerPhone() {
-		return customerPhone;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public void setCustomerPhone(int customerPhone) {
-		this.customerPhone = customerPhone;
+	public int getPhone() {
+		return phone;
 	}
-	public String getCustomerAddress() {
-		return customerAddress;
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
-	public void setCustomerAddress(String customerAddress) {
-		this.customerAddress = customerAddress;
+	public String getAddress() {
+		return address;
 	}
-	public String getCustomerPassword() {
-		return customerPassword;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public void setCustomerPassword(String customerPassword) {
-		this.customerPassword = customerPassword;
+	public String getPassword() {
+		return password;
 	}
-	public Date getCustomerRegDate() {
-		return customerRegDate;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public void setCustomerRegDate(Date customerRegDate) {
-		this.customerRegDate = customerRegDate;
+	public Date getRegistrationDate() {
+		return registrationDate;
 	}
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 }

@@ -53,7 +53,12 @@ public class ProductService {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * Add product if already present
+	 * @param product
+	 * @return int
+	 */
 	public int addProduct(Product product) {
 		logger.trace("Inside addProduct(Product product)");
 

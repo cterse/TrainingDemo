@@ -22,7 +22,12 @@ public class OrderService {
 		logger.trace("Inside getOrdersList()");
 		return this.ordersList;
 	}
-
+	
+	/**
+	 * Get order by order id
+	 * @param id
+	 * @return Order
+	 */
 	public Order getOrder(String id) {
 		logger.trace("Inside getOrder()");
 
@@ -44,7 +49,12 @@ public class OrderService {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * Add order if not already present
+	 * @param order
+	 * @return int
+	 */
 	public int addOrder(Order order) {
 		logger.trace("Inside addOrder()");
 		try {
