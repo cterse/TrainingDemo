@@ -7,32 +7,32 @@ A user can have zero or many orders.
 Each order can have one or many products.
 
 ## User
-String customerId;
-String customerFirstName;
-String customerLastName;
-String customerEmail;
-int customerPhone;
-String customerAddress;
-String customerPassword;
-Date customerRegDate;
+String customerId;<br>
+String customerFirstName;<br>
+String customerLastName;<br>
+String customerEmail;<br>
+int customerPhone;<br>
+String customerAddress;<br>
+String customerPassword;<br>
+Date customerRegDate;<br>
 
 ## Order 
-String id;
-Date date;
-double totalAmount;
-String status;
-List<Product> orderedProducts;
+String id;<br>
+Date date;<br>
+double totalAmount;<br>
+String status;<br>
+List<Product> orderedProducts;<br>
 
 ## Product
-String id;
-String code;
-String name;
-double price;
-String category;
-String type;
-String gender;
-String size;
-String color;
-String description;
-String brand;
-String image;
+String id;<br>
+String code;<br>
+String name;<br>
+double price;<br>
+String category;<br>
+String type;<br>
+String gender;<br>
+String size;<br>
+String color;<br>
+String description;<br>
+String brand;<br>
+String image;<br>
