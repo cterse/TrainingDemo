@@ -3,11 +3,16 @@ package com.personal.TrainingDemo.beans;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class User implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1325594779428364157L;
+	@Id
 	private String id;
 	private String firstName;
 	private String lastName;

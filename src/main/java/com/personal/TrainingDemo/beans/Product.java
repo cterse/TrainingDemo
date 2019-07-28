@@ -2,12 +2,17 @@ package com.personal.TrainingDemo.beans;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Product implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5678042485276937973L;
+	@Id
 	private String id;
 	private String code;
 	private String name;

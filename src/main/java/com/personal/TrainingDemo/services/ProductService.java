@@ -7,22 +7,31 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.personal.TrainingDemo.beans.Product;
+import com.personal.TrainingDemo.repositories.ProductRepository;
 
 @Service
 public class ProductService {
 
 	private static final Logger logger = LoggerFactory.getLogger(ProductService.class);
-
+	
+	@Autowired
+	private ProductRepository productRepo;
+	
 	private List<Product> productsList = new ArrayList<>(
 			Arrays.asList(new Product("3"), new Product("2"), new Product("1")));
 
 	public List<Product> getAllProducts() {
 		logger.trace("Inside getAllProducts()");
 
-		return productsList;
+		//return productsList;
+		
+		List<Product> returnedProductsList = new ArrayList<>();
+		productRepo.findAll().forEach(returnedProductsList::add);
+		return returnedProductsList;
 	}
 
 	/**
@@ -67,14 +76,16 @@ public class ProductService {
 				throw new NullPointerException("input product null");
 			}
 			
-			if(productsList == null) {
-				throw new NullPointerException("productsList null");
-			}
+			/*
+			 * if(productsList == null) { throw new
+			 * NullPointerException("productsList null"); }
+			 * 
+			 * if (getProduct(product.getId()) == null) { productsList.add(product); return
+			 * 0; }
+			 */
 			
-			if (getProduct(product.getId()) == null) {
-				productsList.add(product);
-				return 0;
-			}
+			productRepo.save(product);
+			return 0;
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
