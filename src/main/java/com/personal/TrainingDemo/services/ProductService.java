@@ -17,18 +17,18 @@ import com.personal.TrainingDemo.repositories.ProductRepository;
 public class ProductService {
 
 	private static final Logger logger = LoggerFactory.getLogger(ProductService.class);
-	
+
 	@Autowired
 	private ProductRepository productRepo;
-	
+
 	private List<Product> productsList = new ArrayList<>(
 			Arrays.asList(new Product("3"), new Product("2"), new Product("1")));
 
 	public List<Product> getAllProducts() {
 		logger.trace("Inside getAllProducts()");
 
-		//return productsList;
-		
+		// return productsList;
+
 		List<Product> returnedProductsList = new ArrayList<>();
 		productRepo.findAll().forEach(returnedProductsList::add);
 		return returnedProductsList;
@@ -62,9 +62,10 @@ public class ProductService {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Add product if already present
+	 * 
 	 * @param product
 	 * @return int
 	 */
@@ -75,7 +76,7 @@ public class ProductService {
 			if (product == null) {
 				throw new NullPointerException("input product null");
 			}
-			
+
 			/*
 			 * if(productsList == null) { throw new
 			 * NullPointerException("productsList null"); }
@@ -83,7 +84,7 @@ public class ProductService {
 			 * if (getProduct(product.getId()) == null) { productsList.add(product); return
 			 * 0; }
 			 */
-			
+
 			productRepo.save(product);
 			return 0;
 
