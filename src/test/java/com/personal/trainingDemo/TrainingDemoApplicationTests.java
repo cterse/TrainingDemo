@@ -1,4 +1,4 @@
-package com.personal.TrainingDemo;
+package com.personal.trainingDemo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
