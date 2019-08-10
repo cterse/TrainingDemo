@@ -3,6 +3,7 @@ package com.personal.trainingdemo.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import javax.annotation.Generated;
 
 
 /**
@@ -56,14 +57,32 @@ public class Product implements Serializable {
 	@Column(length=100)
 	private String name;
 
-	@Column(length=10)
-	private String price;
+	private Double price;
 
 	@Column(name="PRODUCT_TYPE", length=100)
 	private String productType;
 
 	@Column(length=50)
 	private String size;
+
+	@Generated("SparkTools")
+	private Product(Builder builder) {
+		this.id = builder.id;
+		this.brand = builder.brand;
+		this.category = builder.category;
+		this.code = builder.code;
+		this.color = builder.color;
+		this.createDate = builder.createDate;
+		this.createdBy = builder.createdBy;
+		this.description = builder.description;
+		this.gender = builder.gender;
+		this.image = builder.image;
+		this.lastUpdateDate = builder.lastUpdateDate;
+		this.name = builder.name;
+		this.price = builder.price;
+		this.productType = builder.productType;
+		this.size = builder.size;
+	}
 
 	public Product() {
 	}
@@ -164,11 +183,11 @@ public class Product implements Serializable {
 		this.name = name;
 	}
 
-	public String getPrice() {
+	public Double getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -186,6 +205,119 @@ public class Product implements Serializable {
 
 	public void setSize(String size) {
 		this.size = size;
+	}
+
+	/**
+	 * Creates builder to build {@link Product}.
+	 * @return created builder
+	 */
+	@Generated("SparkTools")
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link Product}.
+	 */
+	@Generated("SparkTools")
+	public static final class Builder {
+		private String id;
+		private String brand;
+		private String category;
+		private String code;
+		private String color;
+		private Date createDate;
+		private String createdBy;
+		private String description;
+		private String gender;
+		private String image;
+		private Date lastUpdateDate;
+		private String name;
+		private Double price;
+		private String productType;
+		private String size;
+
+		private Builder() {
+		}
+
+		public Builder withId(String id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder withBrand(String brand) {
+			this.brand = brand;
+			return this;
+		}
+
+		public Builder withCategory(String category) {
+			this.category = category;
+			return this;
+		}
+
+		public Builder withCode(String code) {
+			this.code = code;
+			return this;
+		}
+
+		public Builder withColor(String color) {
+			this.color = color;
+			return this;
+		}
+
+		public Builder withCreateDate(Date createDate) {
+			this.createDate = createDate;
+			return this;
+		}
+
+		public Builder withCreatedBy(String createdBy) {
+			this.createdBy = createdBy;
+			return this;
+		}
+
+		public Builder withDescription(String description) {
+			this.description = description;
+			return this;
+		}
+
+		public Builder withGender(String gender) {
+			this.gender = gender;
+			return this;
+		}
+
+		public Builder withImage(String image) {
+			this.image = image;
+			return this;
+		}
+
+		public Builder withLastUpdateDate(Date lastUpdateDate) {
+			this.lastUpdateDate = lastUpdateDate;
+			return this;
+		}
+
+		public Builder withName(String name) {
+			this.name = name;
+			return this;
+		}
+
+		public Builder withPrice(Double price) {
+			this.price = price;
+			return this;
+		}
+
+		public Builder withProductType(String productType) {
+			this.productType = productType;
+			return this;
+		}
+
+		public Builder withSize(String size) {
+			this.size = size;
+			return this;
+		}
+
+		public Product build() {
+			return new Product(this);
+		}
 	}
 
 }

@@ -11,17 +11,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.personal.trainingdemo.beans.ProductDTO;
-import com.personal.trainingdemo.builders.ProductBuilderImpl;
+import com.personal.trainingdemo.beans.UserDTO;
+import com.personal.trainingdemo.builders.ProductDTOBuilderImpl;
 import com.personal.trainingdemo.entities.Product;
+import com.personal.trainingdemo.entities.User;
 
 public class DTOEntityMappings {
 
 	private static final Logger logger = LoggerFactory.getLogger(DTOEntityMappings.class);
 	
 	private List<PropertyMap<?, ?>> getPropertyMaps() {
-		List<PropertyMap<?, ?>> mapsList = new ArrayList<>();
+		List<PropertyMap<?, ?>> propertyMapsList = new ArrayList<>();
 		
-		mapsList.add(new PropertyMap<ProductDTO, Product>() {
+		propertyMapsList.add(new PropertyMap<ProductDTO, Product>() {
 		
 			@Override
 			protected void configure() {
@@ -34,7 +36,34 @@ public class DTOEntityMappings {
 		});
 		logger.trace("Added PropertyMap<ProductDTO, Product>");
 		
-		return mapsList;
+		propertyMapsList.add(new PropertyMap<Product, ProductDTO>() {
+
+			@Override
+			protected void configure() {
+				map().setType(source.getProductType());
+			}
+		});
+		logger.trace("Added PropertyMap<Product, ProductDTO>");
+		
+		propertyMapsList.add(new PropertyMap<UserDTO, User>() {
+			@Override
+			protected void configure() {
+				map().setRegistrationdate(source.getRegistrationDate());
+				
+				skip().setLastUpdateDate(null);
+				skip().setCreatedBy(null);
+				skip().setCreatedDate(null);
+			}
+		});
+		
+		propertyMapsList.add(new PropertyMap<User, UserDTO>() {
+			@Override
+			protected void configure() {
+				map().setRegistrationDate(source.getRegistrationdate());
+			}
+		});
+		
+		return propertyMapsList;
 	}
 	
 	public ModelMapper getModelMapper() {
@@ -50,24 +79,4 @@ public class DTOEntityMappings {
 		return modelMapper;
 	}
 	
-	public static void main(String[] args) {
-		ModelMapper modelMapper = new DTOEntityMappings().getModelMapper();
-		
-		
-		ProductDTO productDto = new ProductBuilderImpl()
-									.setId("1")
-									.setCode("001")
-									.setName("Shirt")
-									.setDescription("Random Cool Shirt")
-									.build();
-		Product product = modelMapper.map(productDto, Product.class);
-		System.out.println(productDto);
-		System.out.println(product.getId() + ":" + product.getName() + ":" + product.getCreatedBy());
-		
-		productDto = new ModelMapper().map(product, ProductDTO.class);
-		System.out.println(productDto.getId() + ":" + productDto.getName() + ":" );
-		
-		System.out.println("Fin.");
-	}
-
 }

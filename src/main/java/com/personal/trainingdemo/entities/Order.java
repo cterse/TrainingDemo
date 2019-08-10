@@ -7,6 +7,7 @@ import com.personal.trainingdemo.utils.CommonConstants;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.annotation.Generated;
 
 
 /**
@@ -48,6 +49,18 @@ public class Order implements Serializable {
 
 	@Column(precision=65535, scale=32767)
 	private BigDecimal totalamount;
+
+	@Generated("SparkTools")
+	private Order(Builder builder) {
+		this.id = builder.id;
+		this.createDate = builder.createDate;
+		this.createdBy = builder.createdBy;
+		this.currency = builder.currency;
+		this.lastUpdateDate = builder.lastUpdateDate;
+		this.orderDate = builder.orderDate;
+		this.status = builder.status;
+		this.totalamount = builder.totalamount;
+	}
 	
 	public Order() {
 	}
@@ -114,6 +127,77 @@ public class Order implements Serializable {
 
 	public void setTotalamount(BigDecimal totalamount) {
 		this.totalamount = totalamount;
+	}
+
+	/**
+	 * Creates builder to build {@link Order}.
+	 * @return created builder
+	 */
+	@Generated("SparkTools")
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link Order}.
+	 */
+	@Generated("SparkTools")
+	public static final class Builder {
+		private String id;
+		private Date createDate;
+		private String createdBy;
+		private String currency;
+		private Date lastUpdateDate;
+		private Date orderDate;
+		private String status;
+		private BigDecimal totalamount;
+
+		private Builder() {
+		}
+
+		public Builder withId(String id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder withCreateDate(Date createDate) {
+			this.createDate = createDate;
+			return this;
+		}
+
+		public Builder withCreatedBy(String createdBy) {
+			this.createdBy = createdBy;
+			return this;
+		}
+
+		public Builder withCurrency(String currency) {
+			this.currency = currency;
+			return this;
+		}
+
+		public Builder withLastUpdateDate(Date lastUpdateDate) {
+			this.lastUpdateDate = lastUpdateDate;
+			return this;
+		}
+
+		public Builder withOrderDate(Date orderDate) {
+			this.orderDate = orderDate;
+			return this;
+		}
+
+		public Builder withStatus(String status) {
+			this.status = status;
+			return this;
+		}
+
+		public Builder withTotalamount(BigDecimal totalamount) {
+			this.totalamount = totalamount;
+			return this;
+		}
+
+		public Order build() {
+			return new Order(this);
+		}
 	}
 
 }

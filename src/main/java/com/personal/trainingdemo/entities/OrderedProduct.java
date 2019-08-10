@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.annotation.Generated;
 
 
 /**
@@ -42,6 +43,17 @@ public class OrderedProduct implements Serializable {
 
 	@Column(name="PRODUCT_QUANTITY", precision=65535, scale=32767)
 	private BigDecimal productQuantity;
+
+	@Generated("SparkTools")
+	private OrderedProduct(Builder builder) {
+		this.createDate = builder.createDate;
+		this.createdBy = builder.createdBy;
+		this.id = builder.id;
+		this.lastUpdateDate = builder.lastUpdateDate;
+		this.orderId = builder.orderId;
+		this.productId = builder.productId;
+		this.productQuantity = builder.productQuantity;
+	}
 
 	public OrderedProduct() {
 	}
@@ -100,6 +112,71 @@ public class OrderedProduct implements Serializable {
 
 	public void setProductQuantity(BigDecimal productQuantity) {
 		this.productQuantity = productQuantity;
+	}
+
+	/**
+	 * Creates builder to build {@link OrderedProduct}.
+	 * @return created builder
+	 */
+	@Generated("SparkTools")
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link OrderedProduct}.
+	 */
+	@Generated("SparkTools")
+	public static final class Builder {
+		private Date createDate;
+		private String createdBy;
+		private String id;
+		private Date lastUpdateDate;
+		private String orderId;
+		private String productId;
+		private BigDecimal productQuantity;
+
+		private Builder() {
+		}
+
+		public Builder withCreateDate(Date createDate) {
+			this.createDate = createDate;
+			return this;
+		}
+
+		public Builder withCreatedBy(String createdBy) {
+			this.createdBy = createdBy;
+			return this;
+		}
+
+		public Builder withId(String id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder withLastUpdateDate(Date lastUpdateDate) {
+			this.lastUpdateDate = lastUpdateDate;
+			return this;
+		}
+
+		public Builder withOrderId(String orderId) {
+			this.orderId = orderId;
+			return this;
+		}
+
+		public Builder withProductId(String productId) {
+			this.productId = productId;
+			return this;
+		}
+
+		public Builder withProductQuantity(BigDecimal productQuantity) {
+			this.productQuantity = productQuantity;
+			return this;
+		}
+
+		public OrderedProduct build() {
+			return new OrderedProduct(this);
+		}
 	}
 
 }

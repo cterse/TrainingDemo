@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.annotation.Generated;
 
 public class ProductDTO implements Serializable {
 
@@ -23,6 +24,22 @@ public class ProductDTO implements Serializable {
 	private String description;
 	private String brand;
 	private String image;
+
+	@Generated("SparkTools")
+	private ProductDTO(Builder builder) {
+		this.id = builder.id;
+		this.code = builder.code;
+		this.name = builder.name;
+		this.price = builder.price;
+		this.category = builder.category;
+		this.type = builder.type;
+		this.gender = builder.gender;
+		this.size = builder.size;
+		this.color = builder.color;
+		this.description = builder.description;
+		this.brand = builder.brand;
+		this.image = builder.image;
+	}
 
 	public ProductDTO() {
 		super();
@@ -127,6 +144,101 @@ public class ProductDTO implements Serializable {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	/**
+	 * Creates builder to build {@link ProductDTO}.
+	 * @return created builder
+	 */
+	@Generated("SparkTools")
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link ProductDTO}.
+	 */
+	@Generated("SparkTools")
+	public static final class Builder {
+		private String id;
+		private String code;
+		private String name;
+		private double price;
+		private String category;
+		private String type;
+		private String gender;
+		private String size;
+		private String color;
+		private String description;
+		private String brand;
+		private String image;
+
+		private Builder() {
+		}
+
+		public Builder withId(String id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder withCode(String code) {
+			this.code = code;
+			return this;
+		}
+
+		public Builder withName(String name) {
+			this.name = name;
+			return this;
+		}
+
+		public Builder withPrice(double price) {
+			this.price = price;
+			return this;
+		}
+
+		public Builder withCategory(String category) {
+			this.category = category;
+			return this;
+		}
+
+		public Builder withType(String type) {
+			this.type = type;
+			return this;
+		}
+
+		public Builder withGender(String gender) {
+			this.gender = gender;
+			return this;
+		}
+
+		public Builder withSize(String size) {
+			this.size = size;
+			return this;
+		}
+
+		public Builder withColor(String color) {
+			this.color = color;
+			return this;
+		}
+
+		public Builder withDescription(String description) {
+			this.description = description;
+			return this;
+		}
+
+		public Builder withBrand(String brand) {
+			this.brand = brand;
+			return this;
+		}
+
+		public Builder withImage(String image) {
+			this.image = image;
+			return this;
+		}
+
+		public ProductDTO build() {
+			return new ProductDTO(this);
+		}
 	}
 	
 	

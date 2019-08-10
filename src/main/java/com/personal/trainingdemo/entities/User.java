@@ -3,6 +3,7 @@ package com.personal.trainingdemo.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import javax.annotation.Generated;
 
 
 /**
@@ -52,6 +53,21 @@ public class User implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	private Date registrationdate;
+
+	@Generated("SparkTools")
+	private User(Builder builder) {
+		this.id = builder.id;
+		this.address = builder.address;
+		this.createdBy = builder.createdBy;
+		this.createdDate = builder.createdDate;
+		this.email = builder.email;
+		this.firstName = builder.firstName;
+		this.lastName = builder.lastName;
+		this.lastUpdateDate = builder.lastUpdateDate;
+		this.password = builder.password;
+		this.phone = builder.phone;
+		this.registrationdate = builder.registrationdate;
+	}
 
 	public User() {
 	}
@@ -142,6 +158,95 @@ public class User implements Serializable {
 
 	public void setRegistrationdate(Date registrationdate) {
 		this.registrationdate = registrationdate;
+	}
+
+	/**
+	 * Creates builder to build {@link User}.
+	 * @return created builder
+	 */
+	@Generated("SparkTools")
+	public static Builder builder() {
+		return new Builder();
+	}
+
+	/**
+	 * Builder to build {@link User}.
+	 */
+	@Generated("SparkTools")
+	public static final class Builder {
+		private String id;
+		private String address;
+		private String createdBy;
+		private Date createdDate;
+		private String email;
+		private String firstName;
+		private String lastName;
+		private Date lastUpdateDate;
+		private String password;
+		private String phone;
+		private Date registrationdate;
+
+		private Builder() {
+		}
+
+		public Builder withId(String id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder withAddress(String address) {
+			this.address = address;
+			return this;
+		}
+
+		public Builder withCreatedBy(String createdBy) {
+			this.createdBy = createdBy;
+			return this;
+		}
+
+		public Builder withCreatedDate(Date createdDate) {
+			this.createdDate = createdDate;
+			return this;
+		}
+
+		public Builder withEmail(String email) {
+			this.email = email;
+			return this;
+		}
+
+		public Builder withFirstName(String firstName) {
+			this.firstName = firstName;
+			return this;
+		}
+
+		public Builder withLastName(String lastName) {
+			this.lastName = lastName;
+			return this;
+		}
+
+		public Builder withLastUpdateDate(Date lastUpdateDate) {
+			this.lastUpdateDate = lastUpdateDate;
+			return this;
+		}
+
+		public Builder withPassword(String password) {
+			this.password = password;
+			return this;
+		}
+
+		public Builder withPhone(String phone) {
+			this.phone = phone;
+			return this;
+		}
+
+		public Builder withRegistrationdate(Date registrationdate) {
+			this.registrationdate = registrationdate;
+			return this;
+		}
+
+		public User build() {
+			return new User(this);
+		}
 	}
 
 }

@@ -3,13 +3,10 @@ package com.personal.trainingdemo.beans;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.annotation.Generated;
+import java.util.Collections;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-import com.personal.trainingdemo.entities.Order;
-
-public class OrderDTO extends Order implements Serializable {
+public class OrderDTO implements Serializable {
 	/**
 	 * 
 	 */
@@ -20,6 +17,16 @@ public class OrderDTO extends Order implements Serializable {
 	private String currency;
 	private String status;
 	private List<ProductDTO> orderedProducts;
+
+	@Generated("SparkTools")
+	private OrderDTO(Builder builder) {
+		this.id = builder.id;
+		this.date = builder.date;
+		this.totalAmount = builder.totalAmount;
+		this.currency = builder.currency;
+		this.status = builder.status;
+		this.orderedProducts = builder.orderedProducts;
+	}
 	
 	public String getId() {
 		return id;
@@ -76,6 +83,63 @@ public class OrderDTO extends Order implements Serializable {
 	}
 	public OrderDTO() {
 		super();
+	}
+	/**
+	 * Creates builder to build {@link OrderDTO}.
+	 * @return created builder
+	 */
+	@Generated("SparkTools")
+	public static Builder builder() {
+		return new Builder();
+	}
+	/**
+	 * Builder to build {@link OrderDTO}.
+	 */
+	@Generated("SparkTools")
+	public static final class Builder {
+		private String id;
+		private Date date;
+		private double totalAmount;
+		private String currency;
+		private String status;
+		private List<ProductDTO> orderedProducts = Collections.emptyList();
+
+		private Builder() {
+		}
+
+		public Builder withId(String id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder withDate(Date date) {
+			this.date = date;
+			return this;
+		}
+
+		public Builder withTotalAmount(double totalAmount) {
+			this.totalAmount = totalAmount;
+			return this;
+		}
+
+		public Builder withCurrency(String currency) {
+			this.currency = currency;
+			return this;
+		}
+
+		public Builder withStatus(String status) {
+			this.status = status;
+			return this;
+		}
+
+		public Builder withOrderedProducts(List<ProductDTO> orderedProducts) {
+			this.orderedProducts = orderedProducts;
+			return this;
+		}
+
+		public OrderDTO build() {
+			return new OrderDTO(this);
+		}
 	}
 		
 	

@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.annotation.Generated;
 
 public class UserDTO implements Serializable {
 	/**
@@ -19,6 +20,18 @@ public class UserDTO implements Serializable {
 	private String address;
 	private String password;
 	private Date registrationDate;
+
+	@Generated("SparkTools")
+	private UserDTO(Builder builder) {
+		this.id = builder.id;
+		this.firstName = builder.firstName;
+		this.lastName = builder.lastName;
+		this.email = builder.email;
+		this.phone = builder.phone;
+		this.address = builder.address;
+		this.password = builder.password;
+		this.registrationDate = builder.registrationDate;
+	}
 	
 	public UserDTO(String id) {
 		super();
@@ -78,6 +91,75 @@ public class UserDTO implements Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	/**
+	 * Creates builder to build {@link UserDTO}.
+	 * @return created builder
+	 */
+	@Generated("SparkTools")
+	public static Builder builder() {
+		return new Builder();
+	}
+	/**
+	 * Builder to build {@link UserDTO}.
+	 */
+	@Generated("SparkTools")
+	public static final class Builder {
+		private String id;
+		private String firstName;
+		private String lastName;
+		private String email;
+		private String phone;
+		private String address;
+		private String password;
+		private Date registrationDate;
+
+		private Builder() {
+		}
+
+		public Builder withId(String id) {
+			this.id = id;
+			return this;
+		}
+
+		public Builder withFirstName(String firstName) {
+			this.firstName = firstName;
+			return this;
+		}
+
+		public Builder withLastName(String lastName) {
+			this.lastName = lastName;
+			return this;
+		}
+
+		public Builder withEmail(String email) {
+			this.email = email;
+			return this;
+		}
+
+		public Builder withPhone(String phone) {
+			this.phone = phone;
+			return this;
+		}
+
+		public Builder withAddress(String address) {
+			this.address = address;
+			return this;
+		}
+
+		public Builder withPassword(String password) {
+			this.password = password;
+			return this;
+		}
+
+		public Builder withRegistrationDate(Date registrationDate) {
+			this.registrationDate = registrationDate;
+			return this;
+		}
+
+		public UserDTO build() {
+			return new UserDTO(this);
+		}
 	}
 	
 	
