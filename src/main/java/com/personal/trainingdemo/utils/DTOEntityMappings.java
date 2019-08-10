@@ -1,7 +1,7 @@
 package com.personal.trainingdemo.utils;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -10,9 +10,10 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.personal.trainingdemo.beans.OrderDTO;
 import com.personal.trainingdemo.beans.ProductDTO;
 import com.personal.trainingdemo.beans.UserDTO;
-import com.personal.trainingdemo.builders.ProductDTOBuilderImpl;
+import com.personal.trainingdemo.entities.Order;
 import com.personal.trainingdemo.entities.Product;
 import com.personal.trainingdemo.entities.User;
 
@@ -28,6 +29,7 @@ public class DTOEntityMappings {
 			@Override
 			protected void configure() {
 				map().setProductType(source.getType());
+				map().setPrice(BigDecimal.valueOf(source.getPrice()));
 				
 				skip().setCreateDate(null);
 				skip().setCreatedBy(null);
@@ -63,6 +65,27 @@ public class DTOEntityMappings {
 			}
 		});
 		
+		propertyMapsList.add(new PropertyMap<OrderDTO, Order>() {
+			@Override
+			protected void configure() {
+				map().setOrderDate(source.getDate());
+				map().setTotalAmount(BigDecimal.valueOf(source.getTotalAmount()));
+				
+				skip().setLastUpdateDate(null);
+				skip().setCreateDate(null);
+				skip().setCreatedBy(null);
+			}
+		});
+		
+		propertyMapsList.add(new PropertyMap<Order, OrderDTO>() {
+			@Override
+			protected void configure() {
+				map().setDate(source.getOrderDate());
+				
+				skip().setOrderedProducts(null);
+			}
+		});
+		
 		return propertyMapsList;
 	}
 	
@@ -78,5 +101,4 @@ public class DTOEntityMappings {
 		
 		return modelMapper;
 	}
-	
 }

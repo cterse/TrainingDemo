@@ -48,7 +48,7 @@ public class Order implements Serializable {
 	private String status;
 
 	@Column(precision=65535, scale=32767)
-	private BigDecimal totalamount;
+	private BigDecimal totalAmount;
 
 	@Generated("SparkTools")
 	private Order(Builder builder) {
@@ -59,7 +59,7 @@ public class Order implements Serializable {
 		this.lastUpdateDate = builder.lastUpdateDate;
 		this.orderDate = builder.orderDate;
 		this.status = builder.status;
-		this.totalamount = builder.totalamount;
+		this.totalAmount = builder.totalAmount;
 	}
 	
 	public Order() {
@@ -121,12 +121,12 @@ public class Order implements Serializable {
 		this.status = status;
 	}
 
-	public BigDecimal getTotalamount() {
-		return this.totalamount;
+	public BigDecimal getTotalAmount() {
+		return this.totalAmount;
 	}
 
-	public void setTotalamount(BigDecimal totalamount) {
-		this.totalamount = totalamount;
+	public void setTotalAmount(BigDecimal totalAmount) {
+		this.totalAmount = totalAmount;
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class Order implements Serializable {
 		private Date lastUpdateDate;
 		private Date orderDate;
 		private String status;
-		private BigDecimal totalamount;
+		private BigDecimal totalAmount;
 
 		private Builder() {
 		}
@@ -190,8 +190,8 @@ public class Order implements Serializable {
 			return this;
 		}
 
-		public Builder withTotalamount(BigDecimal totalamount) {
-			this.totalamount = totalamount;
+		public Builder withTotalAmount(BigDecimal totalAmount) {
+			this.totalAmount = totalAmount;
 			return this;
 		}
 

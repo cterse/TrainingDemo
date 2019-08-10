@@ -1,6 +1,8 @@
 package com.personal.trainingdemo.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 import java.util.Date;
 import javax.annotation.Generated;
@@ -57,7 +59,8 @@ public class Product implements Serializable {
 	@Column(length=100)
 	private String name;
 
-	private Double price;
+	@Column(precision=65535, scale=32767)
+	private BigDecimal price;
 
 	@Column(name="PRODUCT_TYPE", length=100)
 	private String productType;
@@ -183,11 +186,11 @@ public class Product implements Serializable {
 		this.name = name;
 	}
 
-	public Double getPrice() {
+	public BigDecimal getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
@@ -233,7 +236,7 @@ public class Product implements Serializable {
 		private String image;
 		private Date lastUpdateDate;
 		private String name;
-		private Double price;
+		private BigDecimal price;
 		private String productType;
 		private String size;
 
@@ -300,7 +303,7 @@ public class Product implements Serializable {
 			return this;
 		}
 
-		public Builder withPrice(Double price) {
+		public Builder withPrice(BigDecimal price) {
 			this.price = price;
 			return this;
 		}
