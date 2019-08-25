@@ -1,12 +1,5 @@
 package com.personal.trainingdemo;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.math.BigDecimal;
-import java.util.Date;
-
-import org.junit.Test;
 import com.personal.trainingdemo.beans.OrderDTO;
 import com.personal.trainingdemo.beans.ProductDTO;
 import com.personal.trainingdemo.beans.UserDTO;
@@ -14,19 +7,35 @@ import com.personal.trainingdemo.entities.Order;
 import com.personal.trainingdemo.entities.Product;
 import com.personal.trainingdemo.entities.User;
 import com.personal.trainingdemo.utils.DTOEntityMappingImpl;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class DTOEntityMappingsTest {
+
+	DTOEntityMappingImpl mapper = null;
+
+	@Before
+	public void getMapperObject() {
+		mapper = new DTOEntityMappingImpl();
+	}
 
 	@Test
 	public void productDTOToEntityMappingTest() {
 		// getModelMapperTest();
 
-		ProductDTO productDTO = ProductDTO.builder().withId("1").withName("Shirt").withDescription("Random Cool Shirt")
+		ProductDTO productDTO = ProductDTO.builder().withId(BigInteger.ONE).withName("Shirt").withDescription("Random Cool Shirt")
 				.withBrand("testBrand").withCategory("testCategory").withCode("testCode").withColor("testColor")
 				.withGender("testGender").withImage("testImagePath").withPrice(200).withSize("testSize")
 				.withType("testType").build();
 
-		Product mappedProduct = new DTOEntityMappingImpl().getProductEntityFromDTO(productDTO);
+		Product mappedProduct = mapper.getProductEntityFromDTO(productDTO);
 
 		assertNotNull(mappedProduct);
 		assertEquals(productDTO.getBrand(), mappedProduct.getBrand());
@@ -47,13 +56,13 @@ public class DTOEntityMappingsTest {
 	@Test
 	public void productEntityToDTOMappingTest() {
 
-		Product product = Product.builder().withId("1").withName("Shirt").withDescription("Random Cool Shirt")
+		Product product = Product.builder().withId(BigInteger.ONE).withName("Shirt").withDescription("Random Cool Shirt")
 				.withBrand("testBrand").withCategory("testCategory").withCode("testCode").withColor("testColor")
 				.withGender("testGender").withImage("testImagePath").withPrice(BigDecimal.valueOf(200.0))
 				.withSize("testSize").withProductType("testType").withLastUpdateDate(new Date())
 				.withCreateDate(new Date()).withCreatedBy("Chinmay Terse").build();
 
-		ProductDTO mappedProduct = new DTOEntityMappingImpl().getProductDTOFromEntity(product);
+		ProductDTO mappedProduct = mapper.getProductDTOFromEntity(product);
 
 		assertNotNull(mappedProduct);
 		assertEquals(product.getBrand(), mappedProduct.getBrand());
@@ -75,10 +84,10 @@ public class DTOEntityMappingsTest {
 	public void userDTOToEntityMappingTest() {
 
 		UserDTO userDTO = UserDTO.builder().withAddress("testAddress").withEmail("testEmail").withFirstName("testFName")
-				.withId("testId").withLastName("testLName").withPassword("testPassword").withPhone("testPhone")
+				.withId(BigInteger.ONE).withLastName("testLName").withPassword("testPassword").withPhone("testPhone")
 				.withRegistrationDate(new Date()).build();
 
-		User mappedUser = new DTOEntityMappingImpl().getUserEntityFromDTO(userDTO);
+		User mappedUser = mapper.getUserEntityFromDTO(userDTO);
 
 		assertNotNull(mappedUser);
 		assertEquals(userDTO.getAddress(), mappedUser.getAddress());
@@ -96,11 +105,11 @@ public class DTOEntityMappingsTest {
 	public void userEntityToDTOMappingTest() {
 
 		User user = User.builder().withAddress("testAddress").withEmail("testEmail").withFirstName("testFName")
-				.withId("testId").withLastName("testLName").withPassword("testPassword").withPhone("testPhone")
+				.withId(BigInteger.ONE).withLastName("testLName").withPassword("testPassword").withPhone("testPhone")
 				.withRegistrationdate(new Date()).withCreatedBy("Chinmay").withCreatedDate(new Date())
 				.withLastUpdateDate(new Date()).build();
 
-		UserDTO mappedUser = new DTOEntityMappingImpl().getUserDTOFromEntity(user);
+		UserDTO mappedUser = mapper.getUserDTOFromEntity(user);
 
 		assertNotNull(mappedUser);
 		assertEquals(user.getAddress(), mappedUser.getAddress());
@@ -116,10 +125,10 @@ public class DTOEntityMappingsTest {
 	@Test
 	public void orderDTOToEntityMappingTest() {
 
-		OrderDTO orderDTO = OrderDTO.builder().withCurrency("testCurrency").withDate(new Date()).withId("testId")
+		OrderDTO orderDTO = OrderDTO.builder().withCurrency("testCurrency").withDate(new Date()).withId(BigInteger.ONE)
 				.withOrderedProducts(null).withStatus("testStatus").withTotalAmount(500).build();
 
-		Order mappedOrder = new DTOEntityMappingImpl().getOrderEntityFromDTO(orderDTO);
+		Order mappedOrder = mapper.getOrderEntityFromDTO(orderDTO);
 
 		assertNotNull(mappedOrder);
 		assertEquals(orderDTO.getCurrency(), mappedOrder.getCurrency());
@@ -134,10 +143,10 @@ public class DTOEntityMappingsTest {
 	public void orderEntityToDTOMappingTest() {
 
 		Order order = Order.builder().withCreateDate(new Date()).withCreatedBy("Chinmay Terse").withCurrency("INR")
-				.withId("testId").withLastUpdateDate(new Date()).withOrderDate(new Date()).withStatus("testStatus")
+				.withId(BigInteger.ONE).withLastUpdateDate(new Date()).withOrderDate(new Date()).withStatus("testStatus")
 				.withTotalAmount(BigDecimal.valueOf(200.0)).build();
 
-		OrderDTO mappedOrder = new DTOEntityMappingImpl().getOrderDTOFromEntity(order);
+		OrderDTO mappedOrder = mapper.getOrderDTOFromEntity(order);
 
 		assertNotNull(mappedOrder);
 		assertEquals(order.getOrderDate(), mappedOrder.getDate());

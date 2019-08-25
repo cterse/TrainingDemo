@@ -1,10 +1,8 @@
 package com.personal.trainingdemo.beans;
 
-import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.annotation.Generated;
+import java.io.Serializable;
+import java.math.BigInteger;
 
 public class ProductDTO implements Serializable {
 
@@ -12,7 +10,7 @@ public class ProductDTO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 5678042485276937973L;
-	private String id;
+	private BigInteger id;
 	private String code;
 	private String name;
 	private double price;
@@ -45,16 +43,16 @@ public class ProductDTO implements Serializable {
 		super();
 	}
 
-	public ProductDTO(String id) {
+	public ProductDTO(BigInteger id) {
 		super();
 		this.id = id;
 	}
 
-	public String getId() {
+	public BigInteger getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 
@@ -160,7 +158,7 @@ public class ProductDTO implements Serializable {
 	 */
 	@Generated("SparkTools")
 	public static final class Builder {
-		private String id;
+		private BigInteger id;
 		private String code;
 		private String name;
 		private double price;
@@ -176,7 +174,7 @@ public class ProductDTO implements Serializable {
 		private Builder() {
 		}
 
-		public Builder withId(String id) {
+		public Builder withId(BigInteger id) {
 			this.id = id;
 			return this;
 		}

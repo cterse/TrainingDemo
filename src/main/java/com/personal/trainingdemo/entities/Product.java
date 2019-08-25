@@ -1,11 +1,11 @@
 package com.personal.trainingdemo.entities;
 
+import javax.annotation.Generated;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-
-import javax.persistence.*;
+import java.math.BigInteger;
 import java.util.Date;
-import javax.annotation.Generated;
 
 
 /**
@@ -22,7 +22,7 @@ public class Product implements Serializable {
 	@SequenceGenerator(name="PRODUCT_ID_GENERATOR", sequenceName="HIBERNATE_PRODUCT_SEQ")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PRODUCT_ID_GENERATOR")
 	@Column(unique=true, nullable=false, length=30)
-	private String id;
+	private BigInteger id;
 
 	@Column(length=100)
 	private String brand;
@@ -90,11 +90,11 @@ public class Product implements Serializable {
 	public Product() {
 	}
 
-	public String getId() {
+	public BigInteger getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 
@@ -224,7 +224,7 @@ public class Product implements Serializable {
 	 */
 	@Generated("SparkTools")
 	public static final class Builder {
-		private String id;
+		private BigInteger id;
 		private String brand;
 		private String category;
 		private String code;
@@ -243,7 +243,7 @@ public class Product implements Serializable {
 		private Builder() {
 		}
 
-		public Builder withId(String id) {
+		public Builder withId(BigInteger id) {
 			this.id = id;
 			return this;
 		}

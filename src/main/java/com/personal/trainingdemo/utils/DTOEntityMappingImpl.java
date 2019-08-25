@@ -1,20 +1,19 @@
 package com.personal.trainingdemo.utils;
 
-import java.math.BigDecimal;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.personal.trainingdemo.beans.OrderDTO;
 import com.personal.trainingdemo.beans.ProductDTO;
 import com.personal.trainingdemo.beans.UserDTO;
 import com.personal.trainingdemo.entities.Order;
 import com.personal.trainingdemo.entities.Product;
 import com.personal.trainingdemo.entities.User;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
+import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
+@Component
 public class DTOEntityMappingImpl implements DTOEntityMapping {
-
-	private static final Logger logger = LoggerFactory.getLogger(DTOEntityMappingImpl.class);
 
 	@Override
 	public Product getProductEntityFromDTO(ProductDTO productDTO) {
@@ -29,6 +28,7 @@ public class DTOEntityMappingImpl implements DTOEntityMapping {
 
 			@Override
 			protected void configure() {
+
 				map().setProductType(source.getType());
 				map().setPrice(BigDecimal.valueOf(source.getPrice()));
 

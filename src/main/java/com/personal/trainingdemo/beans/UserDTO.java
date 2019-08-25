@@ -1,18 +1,16 @@
 package com.personal.trainingdemo.beans;
 
-import java.io.Serializable;
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.annotation.Generated;
+import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.Date;
 
 public class UserDTO implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1325594779428364157L;
-	private String id;
+	private BigInteger id;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -33,7 +31,7 @@ public class UserDTO implements Serializable {
 		this.registrationDate = builder.registrationDate;
 	}
 	
-	public UserDTO(String id) {
+	public UserDTO(BigInteger id) {
 		super();
 		this.id = id;
 	}
@@ -41,10 +39,10 @@ public class UserDTO implements Serializable {
 		super();
 	}
 
-	public String getId() {
+	public BigInteger getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -105,7 +103,7 @@ public class UserDTO implements Serializable {
 	 */
 	@Generated("SparkTools")
 	public static final class Builder {
-		private String id;
+		private BigInteger id;
 		private String firstName;
 		private String lastName;
 		private String email;
@@ -117,7 +115,7 @@ public class UserDTO implements Serializable {
 		private Builder() {
 		}
 
-		public Builder withId(String id) {
+		public Builder withId(BigInteger id) {
 			this.id = id;
 			return this;
 		}

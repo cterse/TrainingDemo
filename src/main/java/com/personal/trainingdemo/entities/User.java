@@ -1,9 +1,10 @@
 package com.personal.trainingdemo.entities;
 
-import java.io.Serializable;
-import javax.persistence.*;
-import java.util.Date;
 import javax.annotation.Generated;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.Date;
 
 
 /**
@@ -20,7 +21,7 @@ public class User implements Serializable {
 	@SequenceGenerator(name="USER_ID_GENERATOR", sequenceName="HIBERNATE_USER_SEQ")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USER_ID_GENERATOR")
 	@Column(unique=true, nullable=false, length=30)
-	private String id;
+	private BigInteger id;
 
 	@Column(length=200)
 	private String address;
@@ -72,11 +73,11 @@ public class User implements Serializable {
 	public User() {
 	}
 
-	public String getId() {
+	public BigInteger getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 
@@ -174,7 +175,7 @@ public class User implements Serializable {
 	 */
 	@Generated("SparkTools")
 	public static final class Builder {
-		private String id;
+		private BigInteger id;
 		private String address;
 		private String createdBy;
 		private Date createdDate;
@@ -189,7 +190,7 @@ public class User implements Serializable {
 		private Builder() {
 		}
 
-		public Builder withId(String id) {
+		public Builder withId(BigInteger id) {
 			this.id = id;
 			return this;
 		}

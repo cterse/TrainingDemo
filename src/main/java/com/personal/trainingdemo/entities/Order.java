@@ -1,13 +1,11 @@
 package com.personal.trainingdemo.entities;
 
-import java.io.Serializable;
-import javax.persistence.*;
-
-import com.personal.trainingdemo.utils.CommonConstants;
-
-import java.math.BigDecimal;
-import java.util.Date;
 import javax.annotation.Generated;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
 
 
 /**
@@ -24,7 +22,7 @@ public class Order implements Serializable {
 	@SequenceGenerator(name="ORDERS_ID_GENERATOR", sequenceName="HIBERNATE_ORDER_SEQ")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ORDERS_ID_GENERATOR")
 	@Column(unique=true, nullable=false, length=30)
-	private String id;
+	private BigInteger id;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="CREATE_DATE")
@@ -65,11 +63,11 @@ public class Order implements Serializable {
 	public Order() {
 	}
 
-	public String getId() {
+	public BigInteger getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 
@@ -143,7 +141,7 @@ public class Order implements Serializable {
 	 */
 	@Generated("SparkTools")
 	public static final class Builder {
-		private String id;
+		private BigInteger id;
 		private Date createDate;
 		private String createdBy;
 		private String currency;
@@ -155,7 +153,7 @@ public class Order implements Serializable {
 		private Builder() {
 		}
 
-		public Builder withId(String id) {
+		public Builder withId(BigInteger id) {
 			this.id = id;
 			return this;
 		}

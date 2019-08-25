@@ -1,17 +1,18 @@
 package com.personal.trainingdemo.beans;
 
+import javax.annotation.Generated;
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.Generated;
-import java.util.Collections;
 
 public class OrderDTO implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6663916013156545068L;
-	private String id;
+	private BigInteger id;
 	private Date date;
 	private double totalAmount;
 	private String currency;
@@ -28,10 +29,10 @@ public class OrderDTO implements Serializable {
 		this.orderedProducts = builder.orderedProducts;
 	}
 	
-	public String getId() {
+	public BigInteger getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 	public Date getDate() {
@@ -68,12 +69,12 @@ public class OrderDTO implements Serializable {
 		this.orderedProducts = orderedProducts;
 	}
 
-	public OrderDTO(String orderId) {
+	public OrderDTO(BigInteger orderId) {
 		super();
 		this.id = orderId;
 	}
-	public OrderDTO(String orderId, Date orderDate, double orderTotalAmount, String orderStatus,
-			List<ProductDTO> orderedProducts) {
+	public OrderDTO(BigInteger orderId, Date orderDate, double orderTotalAmount, String orderStatus,
+					List<ProductDTO> orderedProducts) {
 		super();
 		this.id = orderId;
 		this.date = orderDate;
@@ -97,7 +98,7 @@ public class OrderDTO implements Serializable {
 	 */
 	@Generated("SparkTools")
 	public static final class Builder {
-		private String id;
+		private BigInteger id;
 		private Date date;
 		private double totalAmount;
 		private String currency;
@@ -107,7 +108,7 @@ public class OrderDTO implements Serializable {
 		private Builder() {
 		}
 
-		public Builder withId(String id) {
+		public Builder withId(BigInteger id) {
 			this.id = id;
 			return this;
 		}
