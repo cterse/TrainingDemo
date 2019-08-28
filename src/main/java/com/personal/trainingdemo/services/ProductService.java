@@ -20,13 +20,18 @@ public class ProductService {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductService.class);
 
+    private final ProductRepository productRepo;
+    private final DTOEntityMapping mapper;
+
     @Autowired
-    private ProductRepository productRepo;
-    @Autowired
-    private DTOEntityMapping mapper;
+    public ProductService(ProductRepository productRepo, DTOEntityMapping mapper) {
+        this.productRepo = productRepo;
+        this.mapper = mapper;
+    }
 
     /**
      * Get all products
+     *
      * @return List<ProductDTO>
      */
     public List<ProductDTO> getAllProducts() {
@@ -47,7 +52,7 @@ public class ProductService {
     /**
      * Get product by product ID.
      *
-     * @param id
+     * @param id Product id.
      * @return Product
      */
     public ProductDTO getProduct(BigInteger id) {
@@ -59,7 +64,7 @@ public class ProductService {
             }
 
             Optional<Product> productOptional = productRepo.findById(id);
-            if(productOptional.isPresent()) {
+            if (productOptional.isPresent()) {
                 return mapper.getProductDTOFromEntity(productOptional.get());
             }
 
@@ -70,9 +75,9 @@ public class ProductService {
     }
 
     /**
-     * Add product if already present
+     * Add product to database.
      *
-     * @param productDto
+     * @param productDto The product to add to database.
      * @return int
      */
     public int addProduct(ProductDTO productDto) {

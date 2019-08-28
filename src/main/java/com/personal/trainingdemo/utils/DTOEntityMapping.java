@@ -8,15 +8,15 @@ import com.personal.trainingdemo.entities.Product;
 import com.personal.trainingdemo.entities.User;
 
 public interface DTOEntityMapping {
-	public Product getProductEntityFromDTO(ProductDTO productDTO);
+    Product getProductEntityFromDTO(ProductDTO productDTO);
 
-	public ProductDTO getProductDTOFromEntity(Product product);
+    ProductDTO getProductDTOFromEntity(Product product);
 
-	public Order getOrderEntityFromDTO(OrderDTO orderDTO);
+    Order getOrderEntityFromDTO(OrderDTO orderDTO);
 
-	public OrderDTO getOrderDTOFromEntity(Order order);
+    OrderDTO getOrderDTOFromEntity(Order order);
 
-	public User getUserEntityFromDTO(UserDTO userDTO);
+    User getUserEntityFromDTO(UserDTO userDTO);
 
-	public UserDTO getUserDTOFromEntity(User user);
+    UserDTO getUserDTOFromEntity(User user);
 }

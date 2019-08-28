@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -14,10 +15,14 @@ public class UserController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
+	private final UserService userService;
+
 	@Autowired
-	private UserService userService;
-	
-	@GetMapping("/users")
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/users")
 	public List<UserDTO> findAllUsers() {
 		logger.trace("inside findAllUsers() ");
 		
@@ -25,8 +30,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/users/{id}")
-	public UserDTO findUserById(@PathVariable String id) {
-		logger.trace("inside findUserById(@PathVariable String id)");
+	public UserDTO findUserById(@PathVariable BigInteger id) {
+		logger.trace("inside findUserById(String id)");
 		
 		return userService.getUser(id);
 	}

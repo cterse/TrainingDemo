@@ -13,27 +13,31 @@ import java.util.List;
 @RestController
 public class ProductController {
 
-	@Autowired
-	private ProductService productService;
-	
-	static final Logger logger = LoggerFactory.getLogger(ProductController.class);
-	
-	@GetMapping("/products")
-	public List<ProductDTO> findAllProducts() {
-		logger.trace("Inside findAllProducts()");
-		return productService.getAllProducts();
-	}
+    private final ProductService productService;
 
-	@GetMapping("products/{id}")
-	public ProductDTO findProduct(@PathVariable BigInteger id) {
-		logger.trace("Inside findProduct()");
-		return productService.getProduct(id);
-	}
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
-	@PostMapping("/products")
-	public int addProduct(@RequestBody ProductDTO product) {
-		logger.trace("Inside addProduct()");
-		return productService.addProduct(product);
-	}
+    @Autowired
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
+
+    @GetMapping("/products")
+    public List<ProductDTO> findAllProducts() {
+        logger.trace("Inside findAllProducts()");
+        return productService.getAllProducts();
+    }
+
+    @GetMapping("products/{id}")
+    public ProductDTO findProduct(@PathVariable BigInteger id) {
+        logger.trace("Inside findProduct()");
+        return productService.getProduct(id);
+    }
+
+    @PostMapping("/products")
+    public int addProduct(@RequestBody ProductDTO product) {
+        logger.trace("Inside addProduct()");
+        return productService.addProduct(product);
+    }
 
 }
