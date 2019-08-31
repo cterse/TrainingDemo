@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -26,7 +27,7 @@ public class OrderController {
     }
 
     @GetMapping("/orders/{id}")
-    public OrderDTO findOrder(@PathVariable(name = "id") String orderId) {
+    public OrderDTO findOrder(@PathVariable(name = "id") BigInteger orderId) {
         logger.trace("Inside findOrder()");
         return orderService.getOrder(orderId);
     }

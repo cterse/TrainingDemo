@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -43,7 +44,7 @@ public class OrderService {
      * @param id ID of the required order.
      * @return Order
      */
-    public OrderDTO getOrder(String id) {
+    public OrderDTO getOrder(BigInteger id) {
         logger.trace("Inside getOrder()");
 
         try {

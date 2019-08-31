@@ -34,9 +34,9 @@ public class ProductControllerTest {
 
         List<ProductDTO> products = productController.findAllProducts();
 
+        verify(productService, times(1)).getAllProducts();
         assertNotNull(products);
         assertEquals(1, products.size());
-        verify(productService, times(1)).getAllProducts();
     }
 
     @Test
@@ -62,9 +62,8 @@ public class ProductControllerTest {
                 .withGender("testGender").withImage("testImagePath").withPrice(200).withSize("testSize")
                 .withType("testType").build();
 
-        int returnValue = productService.addProduct(productToAdd);
+        int returnValue = productController.addProduct(productToAdd);
 
-        verify(productController, times(1)).addProduct(productToAdd);
-        assertEquals(1, returnValue);
+        verify(productService, times(1)).addProduct(productToAdd);
     }
 }
