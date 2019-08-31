@@ -1,11 +1,14 @@
 package com.personal.trainingdemo.entities;
 
-import java.io.Serializable;
-
-import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.Date;
 import javax.annotation.Generated;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
 
 
 /**
@@ -15,25 +18,8 @@ import javax.annotation.Generated;
 @Entity
 @Table(name="ORDERED_PRODUCTS")
 @NamedQuery(name="OrderedProduct.findAll", query="SELECT o FROM OrderedProduct o")
-public class OrderedProduct implements Serializable {
+public class OrderedProduct extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="CREATE_DATE")
-	private Date createDate;
-
-	@Column(name="CREATED_BY", length=100)
-	private String createdBy;
-
-	@Id
-	@Column(length=30)
-	@SequenceGenerator(sequenceName="HIBERNATE_ORDEREDPRODUCTS_SEQ", name = "ORDEREDPRODUCTS_ID_GENERATOR")
-	@GeneratedValue(generator="ORDEREDPRODUCTS_ID_GENERATOR", strategy = GenerationType.SEQUENCE)
-	private String id; 
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="LAST_UPDATE_DATE")
-	private Date lastUpdateDate;
 
 	@Column(name="ORDER_ID", length=30)
 	private String orderId;
@@ -46,48 +32,17 @@ public class OrderedProduct implements Serializable {
 
 	@Generated("SparkTools")
 	private OrderedProduct(Builder builder) {
-		this.createDate = builder.createDate;
-		this.createdBy = builder.createdBy;
-		this.id = builder.id;
-		this.lastUpdateDate = builder.lastUpdateDate;
 		this.orderId = builder.orderId;
 		this.productId = builder.productId;
 		this.productQuantity = builder.productQuantity;
+
+		this.setId(builder.id);
+		this.setCreateDate(builder.createDate);
+		this.setCreatedBy(builder.createdBy);
+		this.setLastUpdateDate(builder.lastUpdateDate);
 	}
 
 	public OrderedProduct() {
-	}
-
-	public Date getCreateDate() {
-		return this.createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public String getCreatedBy() {
-		return this.createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public String getId() {
-		return this.id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public Date getLastUpdateDate() {
-		return this.lastUpdateDate;
-	}
-
-	public void setLastUpdateDate(Date lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
 	}
 
 	public String getOrderId() {
@@ -130,7 +85,7 @@ public class OrderedProduct implements Serializable {
 	public static final class Builder {
 		private Date createDate;
 		private String createdBy;
-		private String id;
+		private BigInteger id;
 		private Date lastUpdateDate;
 		private String orderId;
 		private String productId;
@@ -149,7 +104,7 @@ public class OrderedProduct implements Serializable {
 			return this;
 		}
 
-		public Builder withId(String id) {
+		public Builder withId(BigInteger id) {
 			this.id = id;
 			return this;
 		}

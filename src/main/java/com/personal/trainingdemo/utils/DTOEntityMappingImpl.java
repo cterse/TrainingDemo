@@ -114,7 +114,7 @@ public class DTOEntityMappingImpl implements DTOEntityMapping {
 
 				skip().setLastUpdateDate(null);
 				skip().setCreatedBy(null);
-				skip().setCreatedDate(null);
+				skip().setCreateDate(null);
 			}
 		};
 	}

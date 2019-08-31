@@ -15,28 +15,11 @@ import java.util.Date;
 @Entity
 @Table(name="ORDERS")
 @NamedQuery(name="Order.findAll", query="SELECT o FROM Order o")
-public class Order implements Serializable {
+public class Order extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@SequenceGenerator(name="ORDERS_ID_GENERATOR", sequenceName="HIBERNATE_ORDER_SEQ")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ORDERS_ID_GENERATOR")
-	@Column(unique=true, nullable=false, length=30)
-	private BigInteger id;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="CREATE_DATE")
-	private Date createDate;
-
-	@Column(name="CREATED_BY", length=100)
-	private String createdBy;
 
 	@Column(length=5)
 	private String currency;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="LAST_UPDATE_DATE")
-	private Date lastUpdateDate;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="ORDER_DATE")
@@ -50,41 +33,22 @@ public class Order implements Serializable {
 
 	@Generated("SparkTools")
 	private Order(Builder builder) {
-		this.id = builder.id;
+		/*this.id = builder.id;
 		this.createDate = builder.createDate;
-		this.createdBy = builder.createdBy;
+		this.createdBy = builder.createdBy;*/
 		this.currency = builder.currency;
-		this.lastUpdateDate = builder.lastUpdateDate;
+		/*this.lastUpdateDate = builder.lastUpdateDate;*/
 		this.orderDate = builder.orderDate;
 		this.status = builder.status;
 		this.totalAmount = builder.totalAmount;
+
+		this.setId(builder.id);
+		this.setLastUpdateDate(builder.lastUpdateDate);
+		this.setCreateDate(builder.createDate);
+		this.setCreatedBy(builder.createdBy);
 	}
 	
 	public Order() {
-	}
-
-	public BigInteger getId() {
-		return this.id;
-	}
-
-	public void setId(BigInteger id) {
-		this.id = id;
-	}
-
-	public Date getCreateDate() {
-		return this.createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public String getCreatedBy() {
-		return this.createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
 	}
 
 	public String getCurrency() {
@@ -93,14 +57,6 @@ public class Order implements Serializable {
 
 	public void setCurrency(String currency) {
 		this.currency = currency;
-	}
-
-	public Date getLastUpdateDate() {
-		return this.lastUpdateDate;
-	}
-
-	public void setLastUpdateDate(Date lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
 	}
 
 	public Date getOrderDate() {

@@ -15,14 +15,8 @@ import java.util.Date;
 @Entity
 @Table(name="PRODUCT")
 @NamedQuery(name="Product.findAll", query="SELECT p FROM Product p")
-public class Product implements Serializable {
+public class Product extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@SequenceGenerator(name="PRODUCT_ID_GENERATOR", sequenceName="HIBERNATE_PRODUCT_SEQ")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PRODUCT_ID_GENERATOR")
-	@Column(unique=true, nullable=false, length=30)
-	private BigInteger id;
 
 	@Column(length=100)
 	private String brand;
@@ -36,13 +30,6 @@ public class Product implements Serializable {
 	@Column(length=50)
 	private String color;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="CREATE_DATE")
-	private Date createDate;
-
-	@Column(name="CREATED_BY", length=100)
-	private String createdBy;
-
 	@Column(length=200)
 	private String description;
 
@@ -51,10 +38,6 @@ public class Product implements Serializable {
 
 	@Column(length=200)
 	private String image;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="LAST_UPDATE_DATE")
-	private Date lastUpdateDate;
 
 	@Column(length=100)
 	private String name;
@@ -70,32 +53,25 @@ public class Product implements Serializable {
 
 	@Generated("SparkTools")
 	private Product(Builder builder) {
-		this.id = builder.id;
 		this.brand = builder.brand;
 		this.category = builder.category;
 		this.code = builder.code;
 		this.color = builder.color;
-		this.createDate = builder.createDate;
-		this.createdBy = builder.createdBy;
 		this.description = builder.description;
 		this.gender = builder.gender;
 		this.image = builder.image;
-		this.lastUpdateDate = builder.lastUpdateDate;
 		this.name = builder.name;
 		this.price = builder.price;
 		this.productType = builder.productType;
 		this.size = builder.size;
+
+		this.setId(builder.id);
+		this.setLastUpdateDate(builder.lastUpdateDate);
+		this.setCreateDate(builder.createDate);
+		this.setCreatedBy(builder.createdBy);
 	}
 
 	public Product() {
-	}
-
-	public BigInteger getId() {
-		return this.id;
-	}
-
-	public void setId(BigInteger id) {
-		this.id = id;
 	}
 
 	public String getBrand() {
@@ -130,22 +106,6 @@ public class Product implements Serializable {
 		this.color = color;
 	}
 
-	public Date getCreateDate() {
-		return this.createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public String getCreatedBy() {
-		return this.createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
 	public String getDescription() {
 		return this.description;
 	}
@@ -168,14 +128,6 @@ public class Product implements Serializable {
 
 	public void setImage(String image) {
 		this.image = image;
-	}
-
-	public Date getLastUpdateDate() {
-		return this.lastUpdateDate;
-	}
-
-	public void setLastUpdateDate(Date lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
 	}
 
 	public String getName() {

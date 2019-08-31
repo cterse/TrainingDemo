@@ -14,24 +14,11 @@ import java.util.Date;
 @Entity
 @Table(name="USER")
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable {
+public class User extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@SequenceGenerator(name="USER_ID_GENERATOR", sequenceName="HIBERNATE_USER_SEQ")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USER_ID_GENERATOR")
-	@Column(unique=true, nullable=false, length=30)
-	private BigInteger id;
 
 	@Column(length=200)
 	private String address;
-
-	@Column(name="CREATED_BY", length=100)
-	private String createdBy;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="CREATED_DATE")
-	private Date createdDate;
 
 	@Column(length=100)
 	private String email;
@@ -41,10 +28,6 @@ public class User implements Serializable {
 
 	@Column(name="LAST_NAME", length=100)
 	private String lastName;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="LAST_UPDATE_DATE")
-	private Date lastUpdateDate;
 
 	@Column(length=200)
 	private String password;
@@ -57,28 +40,21 @@ public class User implements Serializable {
 
 	@Generated("SparkTools")
 	private User(Builder builder) {
-		this.id = builder.id;
 		this.address = builder.address;
-		this.createdBy = builder.createdBy;
-		this.createdDate = builder.createdDate;
 		this.email = builder.email;
 		this.firstName = builder.firstName;
 		this.lastName = builder.lastName;
-		this.lastUpdateDate = builder.lastUpdateDate;
 		this.password = builder.password;
 		this.phone = builder.phone;
 		this.registrationdate = builder.registrationdate;
+
+		this.setId(builder.id);
+		this.setLastUpdateDate(builder.lastUpdateDate);
+		this.setCreateDate(builder.createdDate);
+		this.setCreatedBy(builder.createdBy);
 	}
 
 	public User() {
-	}
-
-	public BigInteger getId() {
-		return this.id;
-	}
-
-	public void setId(BigInteger id) {
-		this.id = id;
 	}
 
 	public String getAddress() {
@@ -87,22 +63,6 @@ public class User implements Serializable {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public String getCreatedBy() {
-		return this.createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public Date getCreatedDate() {
-		return this.createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
 	}
 
 	public String getEmail() {
@@ -127,14 +87,6 @@ public class User implements Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public Date getLastUpdateDate() {
-		return this.lastUpdateDate;
-	}
-
-	public void setLastUpdateDate(Date lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
 	}
 
 	public String getPassword() {
